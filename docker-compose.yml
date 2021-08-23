@@ -1,0 +1,12 @@
+version: "3.0"
+services:
+  kanban:
+    build: ./
+    volumes:
+      - ./src:/var/www
+    ports:
+      - 64729:80
+  redis:
+    image: redis
+    volumes:
+      - ./data/redis:/data
