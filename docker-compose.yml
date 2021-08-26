@@ -10,3 +10,10 @@ services:
     image: redis
     volumes:
       - ./data/redis:/data
+  mysql:
+    image: mysql
+    volumes:
+      - ./data/mysql:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+    command: --default-authentication-plugin=mysql_native_password
