@@ -1,0 +1,6 @@
+
+# Ignore Redis and MySQL data persistence directories
+data/
+
+# Ignore my super-secret keys
+.token
