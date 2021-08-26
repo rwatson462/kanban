@@ -1,5 +1,6 @@
 <?php
 
+include __DIR__.'/function/db_connect.php';
 include __DIR__.'/Kanban/Redis.php';
 use Kanban\Redis;
 
