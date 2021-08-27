@@ -12,7 +12,7 @@ class Database extends PDO
       )
    {
       // initialise PDO parameters and connect
-      $dsn = "mysql:host=$host;port=$port;charset=utf8mb4" . ($db_name ? ";dbname=$dbname" : '');
+      $dsn = "mysql:host=$host;port=$port;charset=utf8mb4" . ($db_name ? ";dbname=$db_name" : '');
 
       parent::__construct($dsn, $user, $password);
 
