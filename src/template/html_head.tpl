@@ -9,5 +9,4 @@
       <?php endforeach; ?>
 
       <script src="https://kit.fontawesome.com/829c3213aa.js" crossorigin="anonymous"></script>
-      <script type="text/javascript" src="/js/kanban.js"></script>
    </head>

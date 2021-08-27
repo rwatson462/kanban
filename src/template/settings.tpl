@@ -16,7 +16,7 @@
          <form method="POST" action="/category/new">
             <div class="input-group">
                <input type="text" name="category_name" />
-               <button>Add category</button>
+               <button type="submit">Add category</button>
             </div>
          </form>
       </article>
@@ -32,7 +32,7 @@
          <form method="POST" action="/step/new">
             <div class="input-group">
                <input type="text" name="step_name" />
-               <button>Add step</button>
+               <button type="submit">Add step</button>
             </div>
          </form>
       </article>
