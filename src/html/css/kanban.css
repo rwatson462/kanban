@@ -1,0 +1,28 @@
+
+
+:root
+{
+   /* Shamelessly stolen from https://css-tricks.com/snippets/css/font-stacks/ */
+   --font-serif: Cambria, "Hoefler Text", Utopia, "Liberation Serif", "Nimbus Roman No9 L Regular", Times, "Times New Roman", serif;
+   --font-sans-serif: font-family: "Segoe UI", Candara, "Bitstream Vera Sans", "DejaVu Sans", "Bitstream Vera Sans", "Trebuchet MS", Verdana, "Verdana Ref", sans-serif;
+   --font-fixed-width: Consolas, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", Monaco, "Courier New", Courier, monospace;
+}
+
+html {
+   margin: 0;
+   padding: 0;
+}
+
+body {
+   font-family: var(--font-sans-serif);
+   margin: 0;
+   border: 0;
+}
+
+h1,h2,h3,h4,h5,h6,p.title {
+   font-family: var(--font-serif);
+}
+
+.fixed-width, code, pre {
+   font-family: var(--font-fixed-width);
+}
