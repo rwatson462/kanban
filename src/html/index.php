@@ -1,5 +1,6 @@
 <?php
 
+include dirname(__DIR__).'/config.php';
 include dirname(__DIR__).'/config/route_config.php';
 
 // single point of entry for all requests
