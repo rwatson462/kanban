@@ -6,21 +6,90 @@
    --font-serif: Cambria, "Hoefler Text", Utopia, "Liberation Serif", "Nimbus Roman No9 L Regular", Times, "Times New Roman", serif;
    --font-sans-serif: font-family: "Segoe UI", Candara, "Bitstream Vera Sans", "DejaVu Sans", "Bitstream Vera Sans", "Trebuchet MS", Verdana, "Verdana Ref", sans-serif;
    --font-fixed-width: Consolas, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", Monaco, "Courier New", Courier, monospace;
+
+   --colour-dark: #444;
+   --colour-light: #eee;
+   --colour-shadow: #ddd;
+   --colour-white: #fff;
 }
 
 html {
    margin: 0;
    padding: 0;
+   font-size: 20px;
 }
 
 body {
    font-family: var(--font-serif);
    margin: 0;
-   border: 0;
+   padding: 2rem;
+   background-color: var(--colour-light);
+   color: var(--colour-dark);
+}
+
+article {
+   border-radius: 1rem;
+   padding: 1.5rem 2rem;
+   background-color: var(--colour-white);
+   box-shadow: 0.5rem 0.5rem 0.5rem var(--colour-shadow);
+   animation: fadein 2s;
+   animation-timing-function: ease-out;
+}
+
+article .article-header {
+   margin: -1.5rem -2rem;
+   margin-bottom: 1rem;
+   padding: 1.5rem 2rem;
+   background-color: var(--colour-dark);
+   color: var(--colour-light);
+   border-top-left-radius: 1rem;
+   border-top-right-radius: 1rem;
+}
+
+/* 
+   Add a slight delay to allow the page to format
+   correctly before starting the animation
+*/
+@keyframes fadein {
+   0%   { opacity: 0; }
+   10%  { opacity: 0; }
+   100% { opacity: 1; }
+}
+
+article * {
+   margin: 0.5rem 0;
 }
 
 h1,h2,h3,h4,h5,h6,p.title {
    font-family: var(--font-serif);
+}
+
+h1 {
+   font-size: 3.5rem;
+}
+h2 {
+   font-size: 3rem;
+}
+h3 {
+   font-size: 2.5rem;
+}
+h4 {
+   font-size: 2rem;
+}
+h5 {
+   font-size: 1.5rem;
+}
+h6, small, .small {
+   font-size: 0.8rem;
+}
+
+p {
+   font-size: 1rem;
+}
+
+.smaller {
+   /* set the size to be a little bit smaller than the parent element */
+   font-size: 0.8em;
 }
 
 .fixed-width, code, pre {
@@ -31,7 +100,7 @@ h1,h2,h3,h4,h5,h6,p.title {
 em {
    font-style: normal;
    padding: 0.25rem 0.5rem;
-   background-color: #eee;
+   background-color: var(--colour-light);
    border-radius: 0.5rem;
 }
 
@@ -47,7 +116,7 @@ a:hover {
 }
 
 a.cta:hover {
-   background-color: #eee;
+   background-color: var(--colour-light);
    margin: -0.25rem -0.5rem;
    padding: 0.25rem 0.5rem;
    border-radius: 0.5rem;
@@ -57,4 +126,36 @@ a.cta:hover {
 
 .text-colour-danger {
    color: #f00;
+}
+
+
+
+
+input, textarea, button {
+   font-size: 1rem;
+   padding: 0.25rem 0.5rem;
+   border: 1px solid var(--colour-shadow);
+   border-radius: 0.5rem;
+   font-family: var(--font-sans-serif);
+   outline: none;
+}
+
+input:active, textarea:active, button:active, input:focus, textarea:focus, button:focus {
+   border-color: var(--colour-dark);
+}
+
+form .input-group {
+   display: flex;
+   justify-content: stretch;
+}
+form .input-group :not(button) {
+   flex-grow: 1;
+}
+form .input-group :first-child {
+   border-top-right-radius: 0;
+   border-bottom-right-radius: 0;
+}
+form .input-group :last-child {
+   border-top-left-radius: 0;
+   border-bottom-left-radius: 0;
 }
