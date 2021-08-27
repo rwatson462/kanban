@@ -7,14 +7,30 @@ body {
    flex-direction: column;
    justify-content: center;
    align-items: center;
+   background-color: #eee;
 }
 
-body article {
-   text-align: center;
+article {
+   border-radius: 1rem;
+   padding: 1.5rem 2rem;
+   background-color: #fff;
+   box-shadow: 1rem 1rem 1rem #ddd;
+   
+   animation: fadein 3s;
+   animation-timing-function: ease-out;
 }
-body h1 {
+h1 {
    font-size: 5rem;
 }
-body p {
+p {
    font-size: 2rem;
+}
+article * {
+   margin: 0.5rem 0;
+}
+
+
+@keyframes fadein {
+   from { opacity: 0; }
+   to { opacity: 1; }
 }

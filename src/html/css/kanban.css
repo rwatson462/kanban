@@ -14,7 +14,7 @@ html {
 }
 
 body {
-   font-family: var(--font-sans-serif);
+   font-family: var(--font-serif);
    margin: 0;
    border: 0;
 }
@@ -25,4 +25,36 @@ h1,h2,h3,h4,h5,h6,p.title {
 
 .fixed-width, code, pre {
    font-family: var(--font-fixed-width);
+}
+
+
+em {
+   font-style: normal;
+   padding: 0.25rem 0.5rem;
+   background-color: #eee;
+   border-radius: 0.5rem;
+}
+
+
+a {
+   text-decoration: none;
+   color: #00f;
+   transition: all linear 0.1s;
+}
+a:hover {
+   color: #f00;
+   transition: all linear 0.1s;
+}
+
+a.cta:hover {
+   background-color: #eee;
+   margin: -0.25rem -0.5rem;
+   padding: 0.25rem 0.5rem;
+   border-radius: 0.5rem;
+}
+
+
+
+.text-colour-danger {
+   color: #f00;
 }
