@@ -1,6 +1,5 @@
 <?php
 
-include __DIR__.'/function/db_connect.php';
 include __DIR__.'/Kanban/Redis.php';
 use Kanban\Redis;
 
@@ -10,10 +9,20 @@ $redis = new Redis;
 $redis->connect(RedisHost);
 
 
-function template( string $tpl_file, array $data = [] ): void
+function require_function($function_name)
 {
-   extract($data);
-   include __DIR__ . '/template/' . $tpl_file;
+   if(!function_exists($function_name))
+   {
+      // attempt to include file that should contain the function we seek
+      $filename = __DIR__ . "/function/$function_name.php";
+      if(file_exists($filename))
+      {
+         include $filename;
+      }
+
+      // if the file didn't exist, or the file doesn't contain the function,
+      // we'll just get the normal PHP error back
+   }
 }
 
 
