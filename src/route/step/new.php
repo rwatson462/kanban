@@ -6,9 +6,6 @@ if($_SERVER['REQUEST_METHOD'] !== 'POST') {
    exit;
 }
 
-
-
-
 $step_name = $_POST['step_name'] ?? '';
 
 if(!$step_name) {
@@ -25,4 +22,14 @@ $db->run('insert into steps set title = :title', [
    'title' => $step_name
 ]);
 
-header('Location: /settings');
+
+if(!AJAX_REQUEST) {
+   header('Location: /settings');
+   exit;
+}
+
+header('Content-type: application/json');
+echo json_encode([
+   'result' => 'success',
+   'type' => 'category'
+]);

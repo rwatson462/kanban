@@ -6,9 +6,6 @@ if($_SERVER['REQUEST_METHOD'] !== 'POST') {
    exit;
 }
 
-
-
-
 $category_name = $_POST['category_name'] ?? '';
 
 if(!$category_name) {
@@ -25,4 +22,13 @@ $db->run('insert into categories set title = :title', [
    'title' => $category_name
 ]);
 
-header('Location: /settings');
+if(!AJAX_REQUEST) {
+   header('Location: /settings');
+   exit;
+}
+
+header('Content-type: application/json');
+echo json_encode([
+   'result' => 'success',
+   'type' => 'category'
+]);
