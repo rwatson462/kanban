@@ -10,10 +10,6 @@ const xhr = (url, method = 'GET', data = undefined, responseType = 'json', onloa
 }
 
 
-const loadDynamicContentComplete = (event) => {
-   const {target} = event
-   element.innerHTML = target.responseText
-}
 const loadDynamicContent = (element) => {
    const url = element.dataset.source
    xhr(
@@ -21,26 +17,14 @@ const loadDynamicContent = (element) => {
       'GET', 
       undefined, // no need for data to be sent
       'text', 
-      loadDynamicContentComplete
+      (event) => {
+         const {target} = event
+         element.innerHTML = target.responseText
+      }
    )
 }
 
 
-const xhrPostFormComplete = (event) => {
-   const {target} = event
-   const response = target.response
-   
-   if(response.result && response.result === 'success') {
-      // if form has a linked dynamic content linked, refresh that
-      if(form.dataset.dynamicElement) {
-         let element = document.getElementById(form.dataset.dynamicElement)
-         loadDynamicContent(element)
-      }
-
-      form.reset()
-      return
-   }
-}
 const xhrPostForm = (event) => {
    // make sure form doesn't actually post itself
    event.preventDefault()
@@ -53,7 +37,21 @@ const xhrPostForm = (event) => {
       form.method, 
       formData, 
       'json', 
-      xhrPostFormComplete
+      (event) => {
+         const {target} = event
+         const response = target.response
+         
+         if(response.result && response.result === 'success') {
+            // if form has a linked dynamic content linked, refresh that
+            if(form.dataset.dynamicElement) {
+               let element = document.getElementById(form.dataset.dynamicElement)
+               loadDynamicContent(element)
+            }
+      
+            form.reset()
+            return
+         }
+      }
    )
 
    // make sure form doesn't actually post itself
