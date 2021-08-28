@@ -7,32 +7,28 @@
 
       <article style="width:33%">
          <h3 class="article-header">Categories</h3>
-         <ul>
-            <?php foreach( $categories as $category): ?>
-            <li><?= $category->title ?> (<?= $category->id ?>)</li>
-            <?php endforeach; ?>
-         </ul>
+         <section data-source="/categories/load">
+            <i class="fa fa-fw fa-spinner fa-pulse"></i> Loading...
+         </section>
 
-         <form method="POST" action="/category/new" data-use-ajax="1">
+         <form method="POST" action="/categories/new" data-use-ajax="1">
             <div class="input-group">
-               <input type="text" name="category_name" />
-               <button type="submit">Add category</button>
+               <input type="text" name="category_name" placeholder="New Category" />
+               <button type="submit"><i class="fas fa-save"></i></button>
             </div>
          </form>
       </article>
 
       <article style="width:33%">
          <h3 class="article-header">Steps</h3>
-         <ul>
-            <?php foreach( $steps as $step): ?>
-            <li><?= $step->title ?> (<?= $step->id ?>)</li>
-            <?php endforeach; ?>
-         </ul>
+         <section data-source="/steps/load">
+            <i class="fa fa-fw fa-spinner fa-pulse"></i> Loading...
+         </section>
 
-         <form method="POST" action="/step/new" data-use-ajax="1">
+         <form method="POST" action="/steps/new" data-use-ajax="1">
             <div class="input-group">
-               <input type="text" name="step_name" />
-               <button type="submit">Add step</button>
+               <input type="text" name="step_name" placeholder="New step" />
+               <button type="submit"><i class="fas fa-save"></i></button>
             </div>
          </form>
       </article>
