@@ -25,11 +25,7 @@ const loadDynamicContent = (element) => {
 }
 
 
-const xhrPostForm = (event) => {
-   // make sure form doesn't actually post itself
-   event.preventDefault()
-
-   const form = event.target
+const xhrPostForm = (form) => {
    const formData = new FormData(form)
    
    xhr(
@@ -54,16 +50,17 @@ const xhrPostForm = (event) => {
       }
    )
 
-   // make sure form doesn't actually post itself
+
+const formSubmitHander = (event) => {
+   const form = event.target
+
+   // if this is a form that wants to post itself via ajax,
+   // action that, otherwise just do nothing
+   if(form.dataset.useAjax === "1") {
+      xhrPostForm(form)
+      event.preventDefault()
    return false
 }
-
-
-const setupFormEventListeners = () => {
-   const forms = document.querySelectorAll('form[data-use-ajax="1"]')
-   forms.forEach( form => {
-      form.addEventListener('submit', xhrPostForm)
-   })
 }
 
 const loadDynamicContentElements = () => {
@@ -75,7 +72,7 @@ const loadDynamicContentElements = () => {
 
 addEventListener('DOMContentLoaded', () => {
    // attach hooks to ajax-enabled form submit buttons
-   setupFormEventListeners()
+   document.addEventListener('submit', formSubmitHander)
 
    // dynamically load in requested content
    loadDynamicContentElements()
