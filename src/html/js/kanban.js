@@ -47,16 +47,24 @@ const xhrPostForm = (event) => {
 }
 
 
-addEventListener('DOMContentLoaded', () => {
-   // attach hooks to ajax-enabled form submit buttons
+const setupFormEventListeners = () => {
    const forms = document.querySelectorAll('form[data-use-ajax="1"]')
    forms.forEach( form => {
       form.addEventListener('submit', xhrPostForm)
    })
+}
 
-   // dynamically load in requested content
+const loadDynamicContentElements = () => {
    const dynamicSections = document.querySelectorAll('section[data-source]');
    dynamicSections.forEach( section => {
       loadDynamicContent(section)
    })
+}
+
+addEventListener('DOMContentLoaded', () => {
+   // attach hooks to ajax-enabled form submit buttons
+   setupFormEventListeners()
+
+   // dynamically load in requested content
+   loadDynamicContentElements()
 })
