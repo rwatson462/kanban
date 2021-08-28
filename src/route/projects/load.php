@@ -8,14 +8,13 @@ if(!AJAX_REQUEST)
 }
 
 require_function('db_connect');
+require_function('template');
+
 $db = db_connect();
 
 $projects = $db->run('select id,title from projects order by title');
 
 header('Content-type: text/html');
-?>
-<ul>
-   <?php foreach( $projects as $project ): ?>
-      <li><?= $project->title ?></li>
-   <?php endforeach; ?>
-</ul>
+template('projects/snippets/list', [
+   'projects' => $projects
+]);

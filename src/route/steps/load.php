@@ -8,14 +8,13 @@ if(!AJAX_REQUEST)
 }
 
 require_function('db_connect');
+require_function('template');
+
 $db = db_connect();
 
 $steps = $db->run('select id,title from steps order by title');
 
 header('Content-type: text/html');
-?>
-<ul>
-   <?php foreach( $steps as $step ): ?>
-      <li><?= $step->title ?></li>
-   <?php endforeach; ?>
-</ul>
+template('steps/snippets/list', [
+   'steps' => $steps
+]);
