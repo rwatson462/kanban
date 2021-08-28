@@ -6,14 +6,14 @@
    <div style="display:flex; gap: 2rem; margin-top: 2rem">
 
       <article style="width:33%">
-         <h3 class="article-header">Categories</h3>
-         <section data-source="/categories/load">
+         <h3 class="article-header">Projects</h3>
+         <section data-source="/projects/load">
             <i class="fa fa-fw fa-spinner fa-pulse"></i> Loading...
          </section>
 
-         <form method="POST" action="/categories/new" data-use-ajax="1">
+         <form method="POST" action="/projects/new" data-use-ajax="1">
             <div class="input-group">
-               <input type="text" name="category_name" placeholder="New Category" />
+               <input type="text" name="project_name" placeholder="New Project" />
                <button type="submit"><i class="fas fa-save"></i></button>
             </div>
          </form>

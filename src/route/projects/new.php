@@ -6,11 +6,11 @@ if($_SERVER['REQUEST_METHOD'] !== 'POST') {
    exit;
 }
 
-$category_name = $_POST['category_name'] ?? '';
+$project_name = $_POST['project_name'] ?? '';
 
-if(!$category_name) {
+if(!$project_name) {
    header('Content-type: text/plain');
-   echo "No category name given";
+   echo "No project name given";
    exit;
 }
 
@@ -18,8 +18,8 @@ if(!$category_name) {
 require_function('db_connect');
 $db = db_connect();
 
-$db->run('insert into categories set title = :title', [
-   'title' => $category_name
+$db->run('insert into projects set title = :title', [
+   'title' => $project_name
 ]);
 
 if(!AJAX_REQUEST) {
@@ -30,5 +30,5 @@ if(!AJAX_REQUEST) {
 header('Content-type: application/json');
 echo json_encode([
    'result' => 'success',
-   'type' => 'category'
+   'type' => 'project'
 ]);

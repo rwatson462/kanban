@@ -10,12 +10,12 @@ if(!AJAX_REQUEST)
 require_function('db_connect');
 $db = db_connect();
 
-$categories = $db->run('select id,title from categories order by title');
+$projects = $db->run('select id,title from projects order by title');
 
 header('Content-type: text/html');
 ?>
 <ul>
-   <?php foreach( $categories as $cat ): ?>
-      <li><?= $cat->title ?></li>
+   <?php foreach( $projects as $project ): ?>
+      <li><?= $project->title ?></li>
    <?php endforeach; ?>
 </ul>

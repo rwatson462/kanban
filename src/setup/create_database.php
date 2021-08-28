@@ -77,10 +77,10 @@ create table if not exists step_history (
 
 EOL;
 $db->query($query);
-echo "> Creating table categories\n";
+echo "> Creating table projects\n";
 $query = <<<EOL
 
-create table if not exists categories (
+create table if not exists projects (
    id int not null auto_increment,
    title varchar(50),
    icon varchar(20),
@@ -90,14 +90,14 @@ create table if not exists categories (
 EOL;
 $db->query($query);
 
-echo "> Creating table category_history\n";
+echo "> Creating table project_history\n";
 $query = <<<EOL
 
-create table if not exists category_history (
-   category_id int not null,
+create table if not exists project_history (
+   project_id int not null,
    card_id int not null,
    date_created datetime not null default NOW(),
-   key(category_id)
+   key(project_id)
 )
 
 EOL;
