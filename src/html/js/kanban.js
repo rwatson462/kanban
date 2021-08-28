@@ -36,6 +36,8 @@ const xhrPostForm = (event) => {
             let element = document.getElementById(form.dataset.dynamicElement)
             loadDynamicContent(element)
          }
+
+         form.reset()
          return
       }
    })
