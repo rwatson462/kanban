@@ -37,7 +37,7 @@ $db->query($query);
 
 echo "Creating other data tables\n";
 
-echo ">> Creating table cards\n";
+echo "> Creating table cards\n";
 $query = <<<EOL
 
 create table if not exists cards (
@@ -52,7 +52,7 @@ create table if not exists cards (
 EOL;
 $db->query($query);
 
-echo ">> Creating table steps\n";
+echo "> Creating table steps\n";
 $query = <<<EOL
 
 create table if not exists steps (
@@ -65,7 +65,7 @@ create table if not exists steps (
 EOL;
 $db->query($query);
 
-echo ">> Creating table step_history\n";
+echo "> Creating table step_history\n";
 $query = <<<EOL
 
 create table if not exists step_history (
@@ -77,7 +77,7 @@ create table if not exists step_history (
 
 EOL;
 $db->query($query);
-echo ">> Creating table categories\n";
+echo "> Creating table categories\n";
 $query = <<<EOL
 
 create table if not exists categories (
@@ -90,7 +90,7 @@ create table if not exists categories (
 EOL;
 $db->query($query);
 
-echo ">> Creating table category_history\n";
+echo "> Creating table category_history\n";
 $query = <<<EOL
 
 create table if not exists category_history (
