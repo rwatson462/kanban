@@ -1,5 +1,16 @@
 <?php
 
+
+// This allows all pages to know if they've been requested via
+// an ajax request (provided we remember to add this header to
+// all ajax requests)
+define(
+   'AJAX_REQUEST', 
+   $_SERVER['HTTP_X_REQUESTED_WITH'] ?? '' === 'XMLHttpRequest'
+);
+
+
+// todo move this to a redis_connect function
 include __DIR__.'/Kanban/Redis.php';
 use Kanban\Redis;
 
@@ -7,6 +18,7 @@ const RedisHost = 'redis';
 
 $redis = new Redis;
 $redis->connect(RedisHost);
+
 
 
 function require_function($function_name)
