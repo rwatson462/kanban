@@ -2,6 +2,7 @@
 <html lang="en">
    <head>
       <title>Source Pot Kanban board<?= $page_title ?? '' ? " :: " . $page_title : '' ?></title>
+      <link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon"> 
       
       <link rel="stylesheet" type="text/css" href="/css/kanban.css" />
       <?php foreach($styles ?? [] as $style): ?>
