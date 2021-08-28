@@ -19,6 +19,21 @@ const loadDynamicContent = (element) => {
 }
 
 
+const xhrPostFormComplete = (event) => {
+   const {target} = event
+   const response = target.response
+   
+   if(response.result && response.result === 'success') {
+      // if form has a linked dynamic content linked, refresh that
+      if(form.dataset.dynamicElement) {
+         let element = document.getElementById(form.dataset.dynamicElement)
+         loadDynamicContent(element)
+      }
+
+      form.reset()
+      return
+   }
+}
 const xhrPostForm = (event) => {
    // make sure form doesn't actually post itself
    event.preventDefault()
@@ -26,21 +41,13 @@ const xhrPostForm = (event) => {
    const form = event.target
    const formData = new FormData(form)
    
-   xhr(form.action, form.method, formData, 'json', (event) => {
-      const {target} = event
-      const response = target.response
-      
-      if(response.result && response.result === 'success') {
-         // if form has a linked dynamic content linked, refresh that
-         if(form.dataset.dynamicElement) {
-            let element = document.getElementById(form.dataset.dynamicElement)
-            loadDynamicContent(element)
-         }
-
-         form.reset()
-         return
-      }
-   })
+   xhr(
+      form.action, 
+      form.method, 
+      formData, 
+      'json', 
+      xhrPostFormComplete
+   )
 
    // make sure form doesn't actually post itself
    return false
