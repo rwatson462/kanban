@@ -13,7 +13,7 @@
             <?php endforeach; ?>
          </ul>
 
-         <form method="POST" action="/category/new">
+         <form method="POST" action="/category/new" data-use-ajax="1">
             <div class="input-group">
                <input type="text" name="category_name" />
                <button type="submit">Add category</button>
@@ -29,7 +29,7 @@
             <?php endforeach; ?>
          </ul>
 
-         <form method="POST" action="/step/new">
+         <form method="POST" action="/step/new" data-use-ajax="1">
             <div class="input-group">
                <input type="text" name="step_name" />
                <button type="submit">Add step</button>
