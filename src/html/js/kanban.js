@@ -1,7 +1,6 @@
 
 
 const xhr = (url, method = 'GET', data = undefined, responseType = 'json', onload = undefined) => {
-
    const request = new XMLHttpRequest()
    if(onload) request.addEventListener('load', onload)
    request.open(method, url)
@@ -21,38 +20,41 @@ const loadDynamicContent = (element) => {
 
 
 const xhrPostForm = (event) => {
+   // make sure form doesn't actually post itself
    event.preventDefault()
 
    const form = event.target
    const formData = new FormData(form)
    
-   // todo extra this to a re-usable function
    xhr(form.action, form.method, formData, 'json', (event) => {
       const {target} = event
       const response = target.response
       
-      // todo implement xhr loading of category/step lists
-      // for now, just reload the page
       if(response.result && response.result === 'success') {
-         location.reload()
+         // if form has a linked dynamic content linked, refresh that
+         if(form.dataset.dynamicElement) {
+            let element = document.getElementById(form.dataset.dynamicElement)
+            loadDynamicContent(element)
+         }
          return
       }
    })
 
-   // make sure form doesn't actually post
+   // make sure form doesn't actually post itself
    return false
 }
 
 
-(() => {
+addEventListener('DOMContentLoaded', () => {
    // attach hooks to ajax-enabled form submit buttons
    const forms = document.querySelectorAll('form[data-use-ajax="1"]')
    forms.forEach( form => {
       form.addEventListener('submit', xhrPostForm)
    })
 
+   // dynamically load in requested content
    const dynamicSections = document.querySelectorAll('section[data-source]');
    dynamicSections.forEach( section => {
       loadDynamicContent(section)
    })
-})()
+})
