@@ -10,12 +10,19 @@ const xhr = (url, method = 'GET', data = undefined, responseType = 'json', onloa
 }
 
 
+const loadDynamicContentComplete = (event) => {
+   const {target} = event
+   element.innerHTML = target.responseText
+}
 const loadDynamicContent = (element) => {
    const url = element.dataset.source
-   xhr(url, 'GET', undefined, 'text', (event) => {
-      const {target} = event
-      element.innerHTML = target.responseText
-   })
+   xhr(
+      url, 
+      'GET', 
+      undefined, // no need for data to be sent
+      'text', 
+      loadDynamicContentComplete
+   )
 }
 
 
