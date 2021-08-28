@@ -1,6 +1,7 @@
 <body>
    <article>
       <h1>Kanban <i class="fas fa-long-arrow-alt-right smaller"></i> Settings</h1>
+      <p><a href="/board" class="cta">View board</a></p>
    </article>
 
    <div style="display:flex; gap: 2rem; margin-top: 2rem">
