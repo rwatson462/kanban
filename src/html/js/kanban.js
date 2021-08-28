@@ -36,19 +36,31 @@ const xhrPostForm = (form) => {
       (event) => {
          const {target} = event
          const response = target.response
-         
-         if(response.result && response.result === 'success') {
-            // if form has a linked dynamic content linked, refresh that
-            if(form.dataset.dynamicElement) {
-               let element = document.getElementById(form.dataset.dynamicElement)
-               loadDynamicContent(element)
-            }
-      
-            form.reset()
-            return
+
+         switch(target.status) {
+            case 200:
+               if(response.result && response.result === 'success') {
+                  // if form has a linked dynamic content linked, refresh that
+                  if(form.dataset.dynamicElement) {
+                     let element = document.getElementById(form.dataset.dynamicElement)
+                     loadDynamicContent(element)
+                  }
+            
+                  form.reset()
+                  return
+               }
+               break
+
+            case 422:
+               if(response.message) {
+                  // todo put this in some fancy interface element
+                  alert(response.message)
+               }
+               break
          }
       }
    )
+}
 
 
 const formSubmitHander = (event) => {
@@ -59,13 +71,12 @@ const formSubmitHander = (event) => {
    if(form.dataset.useAjax === "1") {
       xhrPostForm(form)
       event.preventDefault()
-   return false
-}
+      return false
+   }
 }
 
 const loadDynamicContentElements = () => {
-   const dynamicSections = document.querySelectorAll('section[data-source]');
-   dynamicSections.forEach( section => {
+   document.querySelectorAll('section[data-source]').forEach( section => {
       loadDynamicContent(section)
    })
 }

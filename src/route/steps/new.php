@@ -9,8 +9,9 @@ if($_SERVER['REQUEST_METHOD'] !== 'POST') {
 $step_name = $_POST['step_name'] ?? '';
 
 if(!$step_name) {
-   header('Content-type: text/plain');
-   echo "No step name given";
+   http_response_code(422);
+   header('Content-type: application/json');
+   echo '{"result": "error", "message":"No step name given"}';
    exit;
 }
 

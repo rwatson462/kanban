@@ -9,8 +9,9 @@ if($_SERVER['REQUEST_METHOD'] !== 'POST') {
 $project_name = $_POST['project_name'] ?? '';
 
 if(!$project_name) {
-   header('Content-type: text/plain');
-   echo "No project name given";
+   http_response_code(422);
+   header('Content-type: application/json');
+   echo '{"result": "error", "message":"No project name given"}';
    exit;
 }
 
