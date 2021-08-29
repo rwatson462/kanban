@@ -8,6 +8,11 @@ include dirname(__DIR__).'/config/route_config.php';
 // exists, include it if it does
 $uri = $_SERVER['REQUEST_URI'];
 
+// request uri contains query string parameters
+// we'll ditch those as PHP has already got them
+// captured in $_GET
+[$uri] = explode('?', $uri);
+
 // special case '/'
 if( $uri === '/' )
 {
