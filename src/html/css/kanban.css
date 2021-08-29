@@ -153,6 +153,10 @@ button.text {
    color: #f00;
 }
 
+.display-inline {
+   display: inline;
+}
+
 .column-container {
    display: flex; 
    gap: 2rem; 
@@ -162,6 +166,12 @@ button.text {
 
 .column-container article {
    flex-grow: 1;
+}
+
+.two-column {
+   display: flex;
+   align-items: center;
+   justify-content: space-between;;
 }
 
 
