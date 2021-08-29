@@ -1,10 +1,8 @@
 <?php
 
-if (!AJAX_REQUEST) {
-   header('content-type: text/plain');
-   echo 'Error not made with ajax request'."\n";
-   print_r($_REQUEST);
-   exit;
+if(!AJAX_REQUEST) {
+   require_function('guard_xhr');
+   guard_xhr();
 }
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {

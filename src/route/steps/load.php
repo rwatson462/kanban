@@ -1,10 +1,8 @@
 <?php
 
-if(!AJAX_REQUEST)
-{
-   header('Content-type:text/plain');
-   echo 'Invalid operation';
-   exit;
+if(!AJAX_REQUEST) {
+   require_function('guard_xhr');
+   guard_xhr();
 }
 
 require_function('db_connect');

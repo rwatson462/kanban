@@ -1,5 +1,10 @@
 <?php
 
+if(!AJAX_REQUEST) {
+   require_function('guard_xhr');
+   guard_xhr();
+}
+
 // this route is only usable on the POST method
 if($_SERVER['REQUEST_METHOD'] !== 'POST') {
    header('Location: /404');
@@ -22,11 +27,6 @@ $db = db_connect();
 $db->run('insert into projects set title = :title', [
    'title' => $project_name
 ]);
-
-if(!AJAX_REQUEST) {
-   header('Location: /settings');
-   exit;
-}
 
 header('Content-type: application/json');
 echo json_encode([
