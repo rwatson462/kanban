@@ -4,9 +4,9 @@
       <p><a href="/board" class="cta">View board</a></p>
    </article>
 
-   <div style="display:flex; gap: 2rem; margin-top: 2rem">
+   <div class="column-container">
 
-      <article style="width:50%">
+      <article>
          <h3 class="article-header">Projects</h3>
          <section data-source="/projects/load" id="project-list">
             <i class="fa fa-fw fa-spinner fa-pulse"></i> Loading...
@@ -20,7 +20,7 @@
          </form>
       </article>
 
-      <article style="width:50%">
+      <article>
          <h3 class="article-header">Steps</h3>
          <section data-source="/steps/load" id="step-list">
             <i class="fa fa-fw fa-spinner fa-pulse"></i> Loading...

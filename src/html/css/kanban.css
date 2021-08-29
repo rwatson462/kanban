@@ -35,7 +35,7 @@ body {
 
 article {
    border-radius: 1rem;
-   padding: 1.5rem 2rem;
+   padding: 1rem;
    background-color: var(--colour-white);
    box-shadow: 0.5rem 0.5rem 0.5rem var(--colour-shadow);
    animation: fadein 2s;
@@ -43,7 +43,7 @@ article {
 }
 
 article .article-header {
-   margin: -1.5rem -2rem;
+   margin: -1rem;
    margin-bottom: 1rem;
    padding: 1.5rem 2rem;
    background-color: var(--colour-dark);
@@ -145,6 +145,7 @@ div.list, ul.list, ol.list {
 button.text {
    border: 0;
    background-color: transparent;
+   padding: 0;
 }
 
 
@@ -152,7 +153,16 @@ button.text {
    color: #f00;
 }
 
+.column-container {
+   display: flex; 
+   gap: 2rem; 
+   justify-content: space-evenly; 
+   margin-top: 2rem;
+}
 
+.column-container article {
+   flex-grow: 1;
+}
 
 
 input, textarea, button {
