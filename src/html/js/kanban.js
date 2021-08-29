@@ -27,11 +27,13 @@ const loadDynamicContent = (element) => {
 
 const xhrPostForm = (form) => {
    const formData = new FormData(form)
-   
+   const action = form.getAttribute('action')
+   const method = form.getAttribute('method')
+
    xhr(
-      form.action, 
-      form.method, 
-      formData, 
+      action,
+      method,
+      formData,
       'json', 
       (event) => {
          const {target} = event
