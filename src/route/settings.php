@@ -1,7 +1,6 @@
 <?php
 
-require_function('template');
-require_function('db_connect');
+require_function(['template','db_connect']);
 
 $db = db_connect();
 

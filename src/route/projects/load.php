@@ -5,8 +5,7 @@ if(!AJAX_REQUEST) {
    guard_xhr();
 }
 
-require_function('db_connect');
-require_function('template');
+require_function(['db_connect','template']);
 
 $db = db_connect();
 
