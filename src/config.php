@@ -10,16 +10,6 @@ define(
 );
 
 
-// todo move this to a redis_connect function
-include __DIR__.'/Kanban/Redis.php';
-use Kanban\Redis;
-
-const RedisHost = 'redis';
-
-$redis = new Redis;
-$redis->connect(RedisHost);
-
-
 
 function require_function($function_name)
 {
