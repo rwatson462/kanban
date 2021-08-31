@@ -11,6 +11,8 @@ services:
     volumes:
       - ./data/redis:/data
   mysql:
+    # To enable running on the M1 Mac
+    platform: linux/x86_64
     image: mysql
     volumes:
       - ./data/mysql:/var/lib/mysql
