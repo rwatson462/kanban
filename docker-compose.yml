@@ -6,10 +6,10 @@ services:
       - ./src:/var/www
     ports:
       - 64729:80
-  redis:
-    image: redis
-    volumes:
-      - ./data/redis:/data
+  # redis:
+  #   image: redis
+  #   volumes:
+  #     - ./data/redis:/data
   mysql:
     # To enable running on the M1 Mac
     platform: linux/x86_64
